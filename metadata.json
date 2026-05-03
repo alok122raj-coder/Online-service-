@@ -1,0 +1,12 @@
+{
+  "name": "सरकारी सेवा पोर्टल",
+  "description": "एक संपूर्ण सरकारी सेवा पोर्टल जहाँ आप सभी सरकारी नौकरियों, परिणामों, प्रवेश पत्रों और योजनाओं की जानकारी पा सकते हैं।",
+  "requestFramePermissions": [
+    "notifications"
+  ],
+  "majorCapabilities": [
+    "Real-time database",
+    "Admin authentication",
+    "Push notifications"
+  ]
+}

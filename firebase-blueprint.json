@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "GovLink": {
+      "title": "Government Link",
+      "description": "Information about a government service link or notification.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "Title of the service/job in Hindi or English" },
+        "org": { "type": "string", "description": "Official organization or department" },
+        "description": { "type": "string", "description": "Brief details about the service" },
+        "url": { "type": "string", "format": "uri", "description": "Official URL" },
+        "notificationUrl": { "type": "string", "format": "uri", "description": "Optional PDF notification URL" },
+        "category": { 
+          "type": "string", 
+          "enum": ["jobs", "results", "admit", "admission", "scheme", "cert", "state", "central"],
+          "description": "Category for classification"
+        },
+        "tags": { 
+          "type": "array", 
+          "items": { "type": "string" },
+          "description": "Status tags like 'NEW', 'EXTENDED', etc."
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "createdBy": { "type": "string", "description": "UID of the admin creator" }
+      },
+      "required": ["title", "org", "url", "category", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin Configuration",
+      "description": "Authorized admin users",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["super-admin", "editor"] }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/links/{linkId}": {
+      "schema": "GovLink",
+      "description": "Collection of all government service links"
+    },
+    "/admins/{uid}": {
+      "schema": "Admin",
+      "description": "Authorized administrators"
+    }
+  }
+}
